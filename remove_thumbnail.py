@@ -10,6 +10,7 @@ try:
 
 except Exception as e:
     print(f"Error encountered {e}")
+    exit()
 
 files_path = []
 
@@ -20,5 +21,7 @@ for path in sub_dir_path:
         if os.path.isfile(os.path.join(path, f))
     )
 
-for file in files_path:
-    print(file)
+# Print findings report
+with open("debug.txt", "w", newline="", encoding="utf-8") as file:
+    for path in files_path:
+        file.write(f"{path}\n")
