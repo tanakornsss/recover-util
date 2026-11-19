@@ -11,5 +11,14 @@ try:
 except Exception as e:
     print(f"Error encountered {e}")
 
+files_path = []
+
 for path in sub_dir_path:
-    print(path)
+    files_path.extend(
+        os.path.join(path, f)
+        for f in os.listdir(path)
+        if os.path.isfile(os.path.join(path, f))
+    )
+
+for file in files_path:
+    print(file)
