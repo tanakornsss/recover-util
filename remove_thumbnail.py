@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 
 # Ask user for a root dir
-root_dir = str(input("Please enter your target dir: "))
+root_dir = str(input("Please enter your target directory: "))
 sub_dir_path = []
 
 try:
@@ -25,7 +25,7 @@ for path in sub_dir_path:
         to_remove_paths.append(file)
 
 # Ask for confirmation
-confirmation = str(input("Are you sure? Type 'yes' to confirm: "))
+confirmation = str(input("Are you sure? Type 'yes' (case sensitive) to confirm: "))
 if confirmation == "yes":
     for path in to_remove_paths:
         current = Path(path)
