@@ -24,6 +24,11 @@ for path in sub_dir_path:
     for file in dir_path.glob("t*.jpg"):
         to_remove_paths.append(file)
 
+# Write file list to remove
+with open("to_remove.txt", "w", newline="", encoding="utf-8") as f:
+    for path in to_remove_paths:
+        f.write(f"{str(path)}\n")
+
 # Ask for confirmation
 confirmation = str(input("Are you sure? Type 'yes' (case sensitive) to confirm: "))
 if confirmation == "yes":
