@@ -24,9 +24,13 @@ for path in sub_dir_path:
     for file in dir_path.glob("t*.jpg"):
         to_remove_paths.append(file)
 
+# Ask for confirmation
+confirmation = str(input("Are you sure? Type 'yes' to confirm: "))
+if confirmation == "yes":
+    for path in to_remove_paths:
+        current = Path(path)
 
-for path in to_remove_paths:
-    current = Path(path)
+        print(f"Removing: {current}")
+        current.unlink(missing_ok=True)
 
-    print(f"Removing: {current}")
-    current.unlink(missing_ok=True)
+    print("Done!")
