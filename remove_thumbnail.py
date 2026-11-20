@@ -1,5 +1,7 @@
 import os
 
+from pathlib import Path
+
 # Ask user for a root dir
 root_dir = str(input("Please enter your target dir: "))
 sub_dir_path = []
@@ -9,19 +11,22 @@ try:
         sub_dir_path = [entry.path for entry in entries if entry.is_dir()]
 
 except Exception as e:
-    print(f"Error encountered {e}")
+    print(f"Error encountered: {e}")
     exit()
 
-files_path = []
+to_remove_paths = []
 
+# Folder level iter
 for path in sub_dir_path:
-    files_path.extend(
-        os.path.join(path, f)
-        for f in os.listdir(path)
-        if os.path.isfile(os.path.join(path, f))
-    )
+    dir_path = Path(path)
 
-# Print findings report
-with open("debug.txt", "w", newline="", encoding="utf-8") as file:
-    for path in files_path:
-        file.write(f"{path}\n")
+    # File iter
+    for file in dir_path.glob("t*.jpg"):
+        to_remove_paths.append(file)
+
+
+for path in to_remove_paths:
+    current = Path(path)
+
+    print(f"Removing: {current}")
+    current.unlink(missing_ok=True)
