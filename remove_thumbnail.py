@@ -1,23 +1,10 @@
-import os
-
 from pathlib import Path
-
-# Ask user for a root dir
-root_dir = str(input("Please enter your target directory: "))
-sub_dir_path = []
-
-try:
-    with os.scandir(root_dir) as entries:
-        sub_dir_path = [entry.path for entry in entries if entry.is_dir()]
-
-except Exception as e:
-    print(f"Error encountered: {e}")
-    exit()
+from src.utils import get_dir
 
 to_remove_paths = []
 
 # Folder level iter
-for path in sub_dir_path:
+for path in get_dir():
     dir_path = Path(path)
 
     # File iter
