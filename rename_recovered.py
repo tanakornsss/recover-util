@@ -27,12 +27,14 @@ if confirmation == "yes":
 
         new_path = file_path.with_stem(formatted)
 
-        try:
-            file_path.rename(new_path)
-        except FileExistsError as _:
+        repeated_name_cnt = 0
+        while new_path.exists():
             repeated_name_cnt += 1
-            new_path = file_path.with_stem(f"{formatted}({repeated_name_cnt})")
-            file_path.rename(new_path)
+            new_path = file_path.with_stem(
+                f"{formatted}({repeated_name_cnt})"
+            )
+
+        file_path.rename(new_path)
 
     print("Done!")
 
