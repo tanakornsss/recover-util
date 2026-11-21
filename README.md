@@ -12,4 +12,14 @@
 2. Input the root path of generated recovery folder.\
    Example ```D:\Backup```
 3. Review the list of files to be removed generated in the text file named ```to_remove.txt```
-4. Confirm your decision by typing ```yes``` (case-sensitive).
+4. Confirm your decision by typing ```yes``` (case-sensitive)
+
+## 2. Rename Recovered File
+- Rename the file to its modified date with associated file type intact
+- Only works with files recovered via ```photorec```
+
+### Steps
+1. Run ```python rename_recovered.py```
+2. Input the root path of generated recovery folder.\
+   Example ```D:\Backup```
+3. Confirm your decision by typing ```yes``` (case-sensitive)
